@@ -33,9 +33,9 @@ class MyComponent extends React.Component {
     const hassText = hass ? 'HA connected' : 'No hass data provided';
 
     return (
-      <div>
+      <ha-card style={{ padding: '1em' }}>
         <h1>Configuration</h1>
-        <pre>{configText}</pre>
+        <p>{configText}</p>
         <h2>Status: {hassText}</h2>
         <div>
           <button onClick={() => this.callService('light', 'toggle', { entity_id: 'light.wl_office_1' })}>
@@ -47,7 +47,7 @@ class MyComponent extends React.Component {
             Toggle Light (call websocket)
           </button>
         </div>
-      </div>
+      </ha-card>
     );
   }
 }
