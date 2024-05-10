@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class MyComponent extends React.Component {
+  render() {
+    const { config, hass } = this.props;
+
+    // Checking if `config` and `hass` are provided and are not null
+    const configText = config ? JSON.stringify(config) : 'No configuration provided';
+    const hassText = hass ? JSON.stringify(hass) : 'No hass data provided';
+
+    return (
+      <div>
+        <h1>Configuration</h1>
+        <pre>{configText}</pre>
+        <h2>Status</h2>
+        <pre>{hassText}</pre>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default MyComponent;
