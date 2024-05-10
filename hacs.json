@@ -1,6 +1,6 @@
 {
     "name": "React Custom Card",
     "render_readme": true,
-    "filename": "index.js",
+    "filename": "main_prod.js",
     "content_in_root": true
   }
