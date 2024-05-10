@@ -1,5 +1,7 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const TerserPlugin = require('terser-webpack-plugin');  // Ensure TerserPlugin is imported if it's not included by default
 
 module.exports = function override(config, env) {
   // Do not split code into chunks
@@ -16,15 +18,26 @@ module.exports = function override(config, env) {
   // Change output filename and set the path to the root directory
   config.output = {
     ...config.output,
-    filename: 'index.js',
+    filename: 'main_prod.js', 
     path: path.resolve(__dirname)
   };
 
-  // Remove HtmlWebpackPlugin to stop generating index.html
-  config.plugins = config.plugins.filter(plugin => !(plugin instanceof WebpackManifestPlugin));
+  // Minimization configuration to prevent license file generation
+  config.optimization.minimizer = [
+    new TerserPlugin({
+      terserOptions: {
+        format: {
+          comments: false,  // Disable extracting comments to .LICENSE files
+        },
+      },
+      extractComments: false,  // Do not extract comments to separate file
+    }),
+  ];
 
-  // Adjust or remove plugins that generate asset-manifest.json and other unwanted files
-  // This requires knowledge of what plugins are in use that generate these files
+  // Remove plugins generating unwanted files
+  config.plugins = config.plugins.filter(plugin => 
+    !(plugin instanceof WebpackManifestPlugin) && !(plugin instanceof HtmlWebpackPlugin)
+  );
 
   return config;
 };
