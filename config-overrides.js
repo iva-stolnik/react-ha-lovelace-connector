@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-const TerserPlugin = require('terser-webpack-plugin');  // Ensure TerserPlugin is imported if it's not included by default
+const TerserPlugin = require('terser-webpack-plugin'); 
 
 module.exports = function override(config, env) {
   // Do not split code into chunks
