@@ -1,5 +1,5 @@
 # React Home Assistant Custom Component AND Lovelace Connector
-Create custom cards for HA with React!!
+Starter Project - create custom cards for HA with React!!
 
 ### IMPORTANT NOTES:
    * development is separated from HA server and react is not required to be installed on HA server
