@@ -29,13 +29,12 @@ Build react custom component:
    * output in dist/ dir will be used in Home Assistant
 
 ### Home Aassistant setup:
-#### In HA /config/www/ create these 2 files:
-   * if using HACS skip this part
+**if using HACS skip both steps**
+#### In HA /config/www/ create file:
    * react-custom-card.js // or any other name
       * here copy paste build output from `main_prod.js` after you run `npm run build`
 
 #### Setup dashboard:
-   * if using HACS skip this part also
    * open dashboards -> 3 dots in right corner -> resources -> ADD RESOURCES
    * setup paths for new component: 
 ```
