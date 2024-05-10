@@ -1,32 +1,31 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import MyComponent from './App'; // Adjust the import path as necessary
+import MyComponent from './App';
 
 class ReactCustomCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.root = null; // This will hold the React root
+    this.root = null;
     this._config = {};
     this._hass = {};
   }
 
-  // Use setters to handle reactivity
   setConfig(value) {
     this._config = value;
-    this.updateComponent(); // Update the component whenever the config changes
+    this.updateComponent();
   }
 
   set hass(value) {
     this._hass = value;
-    this.updateComponent(); // Update the component whenever the hass changes
+    this.updateComponent();
   }
 
   connectedCallback() {
     const mountPoint = document.createElement('div');
     this.shadowRoot.appendChild(mountPoint);
-    this.root = createRoot(mountPoint); // Initialize React root
-    this.updateComponent(); // Render the component initially with any setup values
+    this.root = createRoot(mountPoint);
+    this.updateComponent();
   }
 
   updateComponent() {
@@ -38,7 +37,7 @@ class ReactCustomCard extends HTMLElement {
 
   disconnectedCallback() {
     if (this.root) {
-      this.root.unmount(); // Clean up the React component
+      this.root.unmount();
     }
   }
 }
