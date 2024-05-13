@@ -46,6 +46,7 @@ Build react custom component:
    ```
 type: custom:react-custom-card
 someProp: You did it legend :)
+entity_id: your_light_entity
    ```
    * save card -> exit dashboard editor
 
