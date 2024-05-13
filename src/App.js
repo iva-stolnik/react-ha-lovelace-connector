@@ -38,12 +38,12 @@ class MyComponent extends React.Component {
         <p>{configText}</p>
         <h2>Status: {hassText}</h2>
         <div>
-          <button onClick={() => this.callService('light', 'toggle', { entity_id: 'light.wl_office_1' })}>
+          <button onClick={() => this.callService('light', 'toggle', { entity_id: config.entity_id })}>
             Toggle Light (call service)
           </button>
         </div>
         <div>
-          <button onClick={() => this.callWebSocket('call_service', 'light', 'toggle', { entity_id: 'light.wl_office_1' })}>
+          <button onClick={() => this.callWebSocket('call_service', 'light', 'toggle', { entity_id: config.entity_id })}>
             Toggle Light (call websocket)
           </button>
         </div>
